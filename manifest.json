@@ -1,0 +1,15 @@
+{
+  "name": "simple boost for kanbanpad.com",
+  "version": "0.1",
+  "description": "Add ability to hide/unhide columns",
+  "content_scripts": [
+    {
+        "matches": ["https://www.kanbanpad.com/*" ],
+        "css": ["kanbanpad_boost.css"],
+        "js": ["jquery-1.7.1.min.js", "kanbanpad_boost.js"]
+    }
+  ],
+  "permissions": [
+    "https://www.kanbanpad.com/"
+  ]
+}

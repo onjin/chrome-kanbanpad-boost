@@ -1,0 +1,26 @@
+header.topmenu .wrapper .logo:after {
+    content: '☺ boosted';
+}
+#steps div.boost_collapsed_column {
+    width: 30px !important;
+    height: 600px !important;
+}
+#steps div.boost_collapsed_column header em {
+    margin: 0 0 0 10px;
+}
+#steps div.boost_collapsed_column header {
+    position: relative;
+    width: 20px !important;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+}
+#steps div.boost_collapsed_column header,
+#steps div.boost_collapsed_column header h1,
+#steps div.boost_collapsed_column header, h1 span {
+    border: none;
+    background: transparent;
+}
+#steps div.boost_collapsed_column header h1 .actions,
+#steps div.boost_collapsed_column section {
+    display: none !important;
+}
