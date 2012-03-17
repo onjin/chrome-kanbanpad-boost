@@ -1,6 +1,6 @@
 {
   "name": "simple boost for kanbanpad.com",
-  "version": "0.2",
+  "version": "0.3",
   "update_url": "https://raw.github.com/onjin/chrome-kanbanpad-boost/master/kanbanpad-boost.crx",
   "description": "Add ability to hide/unhide columns",
   "icons": { "16": "icon16.png",

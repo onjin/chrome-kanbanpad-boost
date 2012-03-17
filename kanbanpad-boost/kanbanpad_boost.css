@@ -14,6 +14,10 @@ header.topmenu .wrapper .logo:after {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
 }
+#steps div.boost_collapsed_column header h1 {
+    height: 500px;
+    text-align: left;
+}
 #steps div.boost_collapsed_column header,
 #steps div.boost_collapsed_column header h1,
 #steps div.boost_collapsed_column header, h1 span {
