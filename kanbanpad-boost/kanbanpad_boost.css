@@ -1,5 +1,5 @@
 header.topmenu .wrapper .logo:after {
-    content: '☺ boosted';
+    content: '☺ boosted [0.4]';
 }
 #steps div.boost_collapsed_column {
     width: 30px !important;
