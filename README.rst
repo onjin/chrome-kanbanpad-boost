@@ -3,6 +3,8 @@ kanbanpad boost
 
 Chrome plugin to add some features to `kanbanpad`_:
  * collapse columns by click on title
+ * remember columns states
+ * show task notes as tooltips
 
 Download plugin:
  * `download plugin`_
