@@ -22,6 +22,39 @@ var KBPBoost = (function($) {
         $.cookie(id, '');
     };
 
+    my.show_ticket_details = function show_ticket_details(el) {
+        id = el.attr('id');
+        console.log('mousein');
+        content = '';
+        $.get( get_url_for_task(el), function(data) {
+            note = $(data).find("#task-note");
+            if (note && note.html()) {
+                content += note.html();
+            }
+            el.qtip({
+                content: {
+                    prerender: true,
+                    title: 'Notes',
+                    text: content
+                },
+                show: {   when: {   event: 'mouseover'}, solo: true   },
+                hide: 'mouseout',
+                position: {
+                    corner: {
+                        target: 'bottomMiddle',
+                        tooltip: 'topMiddle'
+                    }
+                },
+                style: {
+                    name: 'cream',
+                    width: 193
+                }
+            });
+            api = el.qtip("api");
+            api.show();
+        });
+    };
+
     my.init = function() {
         // restore columns state onload
         $('.kanban-column').each(function(index) {
@@ -40,10 +73,27 @@ var KBPBoost = (function($) {
             });
 
         });
+        // attach tickets info popup
+        $('.kanban-column li.ui-droppable p.title').mouseover(function() {
+            my.show_ticket_details($(this).parent().parent());
+        });
     };
 
     // private
-    //function private() {};
+    function get_project_id() {
+        parts = (document.location + "").split("/");
+        parts = parts[4].split("#");
+        return parts[0];
+    }
+    function get_task_id(el) {
+        return el.attr('id').split("-")[1];
+    }
+    function get_task_step_id(el) {
+        return el.parent().parent().parent().attr('id').split("-")[1];
+    }
+    function get_url_for_task(el) {
+        return "https://" + location.host + "/projects/" + get_project_id() + "/steps/" + get_task_step_id(el) + "/tasks/" + get_task_id(el);
+    }
 
     return my;
 } (jQuery));
