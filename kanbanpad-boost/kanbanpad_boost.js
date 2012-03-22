@@ -24,12 +24,15 @@ var KBPBoost = (function($) {
 
     my.show_ticket_details = function show_ticket_details(el) {
         id = el.attr('id');
+        if( el.data('qtip')  ) {
+            return;
+        }
         console.log('mousein');
         content = '';
         $.get( get_url_for_task(el), function(data) {
             note = $(data).find("#task-note");
             if (note && note.html()) {
-                content += note.html();
+                content += '<pre class="task-note">' + note.html() + '</pre>';
             }
             el.qtip({
                 content: {
@@ -37,8 +40,15 @@ var KBPBoost = (function($) {
                     title: 'Notes',
                     text: content
                 },
-                show: {   when: {   event: 'mouseover'}, solo: true   },
+                show: {
+                    solo: true,
+                    delay: 800,
+                    when: {
+                        event: 'mouseover'
+                    }
+                },
                 hide: 'mouseout',
+                onHide: function() { $(this).qtip('destroy'); },
                 position: {
                     corner: {
                         target: 'bottomMiddle',
@@ -47,7 +57,7 @@ var KBPBoost = (function($) {
                 },
                 style: {
                     name: 'cream',
-                    width: 193
+                    width: el.outerWidth()
                 }
             });
             api = el.qtip("api");

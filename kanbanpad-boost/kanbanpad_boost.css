@@ -1,5 +1,5 @@
 header.topmenu .wrapper .logo:after {
-    content: '☺ boosted [0.6.0]';
+    content: '☺ boosted [0.6.1]';
 }
 #steps div.boost_collapsed_column {
     width: 30px !important;
@@ -27,4 +27,11 @@ header.topmenu .wrapper .logo:after {
 #steps div.boost_collapsed_column header h1 .actions,
 #steps div.boost_collapsed_column section {
     display: none !important;
+}
+pre.task-note {
+    white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+    white-space: -pre-wrap; /* Opera */
+    white-space: -o-pre-wrap; /* Opera */
+    white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+    word-wrap: break-word; /* IE 5.5+ */
 }
