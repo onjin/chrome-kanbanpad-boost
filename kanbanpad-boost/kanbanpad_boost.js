@@ -78,8 +78,8 @@ var KBPBoost = (function($) {
         // attach columns toggling
         $('.kanban-column').each(function(index) {
             col = $(this);
-            col.find('h1.edit-step').click(function() {
-                my.toggle_column($(this).parent().parent());
+            col.find('h1.edit-step .step-name').click(function() {
+                my.toggle_column($(this).parent().parent().parent());
             });
 
         });

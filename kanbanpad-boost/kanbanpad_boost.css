@@ -1,5 +1,5 @@
 header.topmenu .wrapper .logo:after {
-    content: '☺ boosted [0.6.1]';
+    content: '☺ boosted [0.6.2]';
 }
 #steps div.boost_collapsed_column {
     width: 30px !important;
@@ -25,6 +25,7 @@ header.topmenu .wrapper .logo:after {
     background: transparent;
 }
 #steps div.boost_collapsed_column header h1 .actions,
+#steps div.boost_collapsed_column header h1 .move-step,
 #steps div.boost_collapsed_column section {
     display: none !important;
 }
