@@ -27,7 +27,6 @@ var KBPBoost = (function($) {
         if( el.data('qtip')  ) {
             return;
         }
-        console.log('mousein');
         content = '';
         $.get( get_url_for_task(el), function(data) {
             note = $(data).find("#task-note");
@@ -42,7 +41,7 @@ var KBPBoost = (function($) {
                 },
                 show: {
                     solo: true,
-                    delay: 800,
+                    delay: 1000,
                     when: {
                         event: 'mouseover'
                     }
@@ -102,7 +101,7 @@ var KBPBoost = (function($) {
         return el.parent().parent().parent().attr('id').split("-")[1];
     }
     function get_url_for_task(el) {
-        return "https://" + location.host + "/projects/" + get_project_id() + "/steps/" + get_task_step_id(el) + "/tasks/" + get_task_id(el);
+        return "https://" + location.host + "/projects/" + get_project_id() + "/tasks/" + get_task_id(el);
     }
 
     return my;
