@@ -43,10 +43,10 @@ var KBPBoost = (function($) {
                     solo: true,
                     delay: 1000,
                     when: {
-                        event: 'mouseover'
+                        event: 'mouseenter'
                     }
                 },
-                hide: 'mouseout',
+                hide: 'mouseleave',
                 onHide: function() { $(this).qtip('destroy'); },
                 position: {
                     corner: {
