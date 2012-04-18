@@ -64,6 +64,24 @@ var KBPBoost = (function($) {
         });
     };
 
+    my.find_tickets = function find_tickets(owner) {
+        if (! owner ) {
+            owner = 'Unassigned';
+        }
+        $('.kanban-column ul li').each(function() {
+            user = $(this).find('span.asignee').html();
+            if ( user != owner ) {
+                $(this).stop().animate({opacity: 0.3});
+            }
+
+        });
+    };
+    my.reset_search = function reset_search() {
+        $('.kanban-column ul li').each(function() {
+            $(this).stop().animate({opacity: 1});
+        });
+    };
+
     my.init = function() {
         // restore columns state onload
         $('.kanban-column').each(function(index) {
@@ -83,8 +101,14 @@ var KBPBoost = (function($) {
 
         });
         // attach tickets info popup
-        $('.kanban-column li.ui-droppable p.title').mouseover(function() {
-            my.show_ticket_details($(this).parent().parent());
+        $('.kanban-column li.ui-droppable').mouseenter(function() {
+            my.show_ticket_details($(this));
+        });
+        // attach search owner routine
+        $('#user-swatch li').mouseenter(function() {
+            my.find_tickets($(this).attr('data-name'));
+        }).mouseleave(function() {
+            my.reset_search();
         });
     };
 
