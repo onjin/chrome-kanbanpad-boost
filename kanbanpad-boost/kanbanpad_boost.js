@@ -29,6 +29,7 @@ var KBPBoost = (function($) {
         }
         content = '';
         $.get( get_url_for_task(el), function(data) {
+            content = '';
             note = $(data).find("#task-note");
             if (note && note.html()) {
                 content += '<pre class="task-note">' + note.html() + '</pre>';
@@ -41,13 +42,13 @@ var KBPBoost = (function($) {
                 },
                 show: {
                     solo: true,
-                    delay: 1000,
+                    delay: 700,
                     when: {
                         event: 'mouseenter'
                     }
                 },
                 hide: 'mouseleave',
-                onHide: function() { $(this).qtip('destroy'); },
+                onHide: function() { $('.qtip').remove(); },
                 position: {
                     corner: {
                         target: 'bottomMiddle',
