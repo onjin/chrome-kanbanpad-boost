@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>kanbanpad-boost options</title>
+        <style type="text/css">
+            * {
+                font-family: 'Helvetica Neue', Helvetica, sans-serif;
+                font-size: 14px;
+            }
+            h1 {
+                background-image: -webkit-linear-gradient(top, #E44D26, #D4360E);
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                color: white;
+                display: block;
+                font-weight: bold;
+                height: 23px;
+                margin: -2px -2px 0 -2px;
+                padding: 5px 14px;
+                outline-color: white;
+                position: relative;
+                width: 446px;
+            }
+            #options {
+                -webkit-box-shadow: rgba(0, 0, 0, 0.746094) 0px 0px 5px 0px;
+                background-color: #F3F3F3;
+                box-shadow: rgba(0, 0, 0, 0.746094) 0px 0px 5px 0px;
+                color: #222;
+                display: block;
+                height: 246px;
+                left: 397px;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                top: 154px;
+                width: 470px;
+            }
+        </style>
+        <script type="text/javascript">
+
+
+        // Saves options to localStorage.
+        function save_options() {
+            var popup_notes = document.getElementById("popup_notes").checked;
+            localStorage.popup_notes = popup_notes;
+        }
+
+        // Restores select box state to saved value from localStorage.
+        function restore_options() {
+            var popup_notes = localStorage.popup_notes;
+            if (popup_notes == 'true') {
+                document.getElementById("popup_notes").checked = true;
+            } else {
+                document.getElementById("popup_notes").checked = false;
+            }
+        }
+
+        </script>
+    </head>
+    <body onload="restore_options()">
+        <div id="options">
+        <h1>kanbanpad-boost plugin configuration</h1>
+            <p>
+                <input type="checkbox" id="popup_notes" onclick="save_options()"/>
+                <label for="popup_notes">Enable popup notes</label>
+            </p>
+        </div>
+    </body>
+</html>

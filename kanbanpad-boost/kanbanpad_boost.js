@@ -23,45 +23,53 @@ var KBPBoost = (function($) {
     };
 
     my.show_ticket_details = function show_ticket_details(el) {
-        id = el.attr('id');
-        if( el.data('qtip')  ) {
-            return;
-        }
-        content = '';
-        $.get( get_url_for_task(el), function(data) {
-            content = '';
-            note = $(data).find("#task-note");
-            if (note && note.html()) {
-                content += '<pre class="task-note">' + note.html() + '</pre>';
+        console.log(el);
+        chrome.extension.sendRequest({method: "getLocalStorage", key: 'popup_notes'}, function(response) {
+            console.log(response.data);
+            if ( response.data == 'false' ) {
+                return;
             }
-            el.qtip({
-                content: {
-                    prerender: true,
-                    title: 'Notes',
-                    text: content
-                },
-                show: {
-                    solo: true,
-                    delay: 700,
-                    when: {
-                        event: 'mouseenter'
-                    }
-                },
-                hide: 'mouseleave',
-                onHide: function() { $('.qtip').remove(); },
-                position: {
-                    corner: {
-                        target: 'bottomMiddle',
-                        tooltip: 'topMiddle'
-                    }
-                },
-                style: {
-                    name: 'cream',
-                    width: el.outerWidth()
+
+            id = el.attr('id');
+            if( el.data('qtip')  ) {
+                return;
+            }
+            $.get( get_url_for_task(el), function(data) {
+                console.log(el.qtip);
+                content = '';
+                note = $(data).find("#task-note");
+                if (note && note.html()) {
+                    content += '<pre class="task-note">' + note.html() + '</pre>';
                 }
+                el.qtip({
+                    content: {
+                        prerender: true,
+                        title: 'Notes',
+                        text: content
+                    },
+                    show: {
+                        solo: true,
+                        delay: 700,
+                        when: {
+                            event: 'mouseenter'
+                        }
+                    },
+                    hide: 'mouseleave',
+                    onHide: function() { $('.qtip').remove(); },
+                    position: {
+                        corner: {
+                            target: 'bottomMiddle',
+                            tooltip: 'topMiddle'
+                        }
+                    },
+                    style: {
+                        name: 'cream',
+                        width: el.outerWidth()
+                    }
+                });
+                api = el.qtip("api");
+                api.show();
             });
-            api = el.qtip("api");
-            api.show();
         });
     };
 
